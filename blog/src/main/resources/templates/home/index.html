@@ -1,0 +1,24 @@
+<main>
+    <div class="container body-content">
+        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">sal;diwqodksl;a</h5>
+            </div>
+            <p class="mb-1">asdasd.</p>
+            <small class="text-muted">asdla';sldo</small>
+        </a>
+
+        <div class="list-group" id="search_result">
+        </div>
+        <div class="row">
+            <div class="col-md-6" th:each="category : ${categories}">
+                <header>
+                    <h2>
+                        <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name + ' (' + #sets.size(category.articles) + ')'}">
+                        </a>
+                    </h2>
+                </header>
+            </div>
+        </div>
+    </div>
+</main>

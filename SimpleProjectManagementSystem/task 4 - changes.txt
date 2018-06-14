@@ -1,0 +1,12 @@
+Added fields, constructor, getters and setters to Item class
+Created TODO, Ticket, Task, ItemsList classes
+Implemented methods in ProjectManagementSystemImpl
+Modified TaskPriority
+Added field verification for Item, Task, Ticket, TODO
+Added View method in Item and children
+implemented changeToDoState // My attempt to get this done with stream().getFirst() wasnt working so i went for foreach
+Added Data to ProjectManagerSystemConstructor
+Added implementation in CommandParserImpl
+Added "-" between NOT-DONE in TodoState and between Low-Priority and High-Priority in TicketPriority
+
+//Unsure about Task 2

@@ -1,0 +1,62 @@
+<main>
+    <div class="container body-content span=8 offset=2">
+        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">SDASDAS</h5>
+            </div>
+            <p class="mb-1">asdasdasd</p>
+            <small class="text-muted">;l;'l';;</small>
+        </a>
+
+        <div class="list-group" id="search_result">
+        </div>
+        <div class="well">
+            <form class="form-horizontal" enctype="multipart/form-data" th:action="@{/user/edit/}" method="post">
+                <fieldset>
+                    <legend>Edit Profile</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_email">Email</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="email" id="user_email" placeholder="Email" name="email"
+                                   required="required" th:value="${user.email}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_fullname">Full Name</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="text" id="user_fullname" placeholder="Full Name"
+                                   name="fullName" required="required" th:value="${user.fullName}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_password_first">Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="user_password_first" placeholder="Password"
+                                   name="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_password_second">Confirm Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="user_password_second" placeholder="Password"
+                                   name="confirmPassword"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table>
+                            <img class="img-circle" th:attr="src=@{${user.avatarPath}}" style="width:84px;height:84px" />
+                            <tr><td>Image to upload:</td><td><input type="file" name="file" /></td></tr>
+                        </table>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/profile}">Cancel</a>
+                            <input value="Edit" type="submit" class="btn btn-success"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>

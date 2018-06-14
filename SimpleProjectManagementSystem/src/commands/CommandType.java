@@ -1,0 +1,5 @@
+package commands;
+
+public enum CommandType {
+    ADD_TASK, ADD_TICKET, ADD_TODO, UPDATE_TODO, LIST_ALL, LIST_TODOS, LIST_TODOS_NOT_DONE, LIST_TICKETS, LIST_TASKS, EXIT,
+}

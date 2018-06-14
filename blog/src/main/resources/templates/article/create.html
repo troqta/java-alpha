@@ -1,0 +1,64 @@
+<main>
+    <div class="container body-content span=8 offset=2">
+        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">3 days ago</small>
+        </a>
+
+        <div class="list-group" id="search_result">
+        </div>
+        <div class="well">
+            <form enctype="multipart/form-data" class="form-horizontal" th:action="@{/article/create}" method="POST">
+                <fieldset>
+                    <legend>New Post</legend>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="article_title">Article Title</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="article_title" placeholder="Article Title"
+                                   name="title"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="article_content">Content</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="6" id="article_content" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="article_tags">Tags</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="article_tags" placeholder="Tags" name="tagString"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="article_category">Category</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="article_category" name="categoryId">
+                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                            </select>
+                        </div>
+                        <div>
+                            <form method="POST" enctype="multipart/form-data" th:action="@{create}">
+                                <table>
+                                    <tr><td>Image to upload:</td><td><input type="file" name="file" /></td></tr>
+
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}">Cancel</a>
+                            <input type="submit" class="btn btn-primary" value="Submit"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
