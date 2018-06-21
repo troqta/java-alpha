@@ -83,8 +83,12 @@ main article {
 }
 
 main article img {
+    transition: transform .2s;
     border-radius: 15px;
     width: 150px;
+}
+.zoom:hover {
+    transform: scale(1.5);
 }
 
 section {
@@ -104,3 +108,16 @@ article p {
 article>div {
     min-height: 260px;
 }
+.hidden{
+    margin: auto;
+    display:none;
+}
+.unhide{
+    
+    display: block;
+    color: red
+}
+.unhide:hover > .hidden{
+    display: block;
+}
+
