@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
-    public static void fakeInput(){
+    public static void fakeInput() {
         String input = "3\n" +
                 "1 3";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -22,11 +22,10 @@ public class Main {
         String[] inputArray = in.nextLine().split(" ");
         char[] input = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
-            input[i]=inputArray[i].charAt(0);
+            input[i] = inputArray[i].charAt(0);
         }
         Arrays.sort(input);
         rep(items, input, item, 0);
-
 
 
         for (char[] rep : items) {
@@ -34,13 +33,13 @@ public class Main {
         }
     }
 
-    private static void rep(LinkedList<char[]> reps, char[] input, char[] item, int count){
-        if (count < item.length){
+    private static void rep(LinkedList<char[]> reps, char[] input, char[] item, int count) {
+        if (count < item.length) {
             for (int i = 0; i < input.length; i++) {
                 item[count] = input[i];
-                rep(reps, input, item, count+1);
+                rep(reps, input, item, count + 1);
             }
-        }else{
+        } else {
             reps.add(item.clone());
         }
 

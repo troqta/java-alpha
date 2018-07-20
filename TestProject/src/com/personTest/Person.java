@@ -9,24 +9,27 @@ public class Person {
     ArrayList<String> interests;
     ArrayList<Person> friends;
 
-    public Person(String name, int age, String phoneNumber){
-        this.name=name;
-        this.age=age;
-        this.phoneNumber=phoneNumber;
-        this.interests=new ArrayList<String>();
+    public Person(String name, int age, String phoneNumber) {
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.interests = new ArrayList<String>();
         this.friends = new ArrayList<Person>();
     }
-    public Person(String name, int age, String phoneNumber, ArrayList<String> interests, ArrayList<Person> friends){
-        this.name=name;
-        this.age=age;
-        this.phoneNumber=phoneNumber;
-        this.interests=interests;
+
+    public Person(String name, int age, String phoneNumber, ArrayList<String> interests, ArrayList<Person> friends) {
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.interests = interests;
         this.friends = friends;
     }
-    public void addInterest(String interest){
+
+    public void addInterest(String interest) {
         this.interests.add(interest);
     }
-    public void addFriend(Person friend){
+
+    public void addFriend(Person friend) {
         this.friends.add(friend);
     }
 
@@ -69,30 +72,33 @@ public class Person {
     public void setFriends(ArrayList<Person> friends) {
         this.friends = friends;
     }
-    public void printPerson(){
-        System.out.println("Name: "+name);
-        System.out.println("Age: "+age);
-        System.out.println("Phone number: "+phoneNumber);
+
+    public void printPerson() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Phone number: " + phoneNumber);
         printInterests();
         printFriends();
 
         System.out.println("- - - - - - - - -");
 
     }
-    public void printInterests(){
+
+    public void printInterests() {
         System.out.print("Interests: ");
-        for (String interest:
+        for (String interest :
                 interests) {
-            System.out.print(interest+", ");
+            System.out.print(interest + ", ");
 
         }
         System.out.println();
     }
-    public void printFriends(){
+
+    public void printFriends() {
         System.out.print("Friends: ");
-        for (Person friend:
+        for (Person friend :
                 friends) {
-            System.out.print(friend.getName()+", ");
+            System.out.print(friend.getName() + ", ");
 
         }
         System.out.println();

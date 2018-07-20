@@ -32,7 +32,7 @@ class Solution {
     }
 
     public int getIsland(int[][] grid, int row, int col) {
-        if (row < 0 || col < 0 || row > grid.length-1 || col > grid[0].length-1 || grid[row][col] != 1) {
+        if (row < 0 || col < 0 || row > grid.length - 1 || col > grid[0].length - 1 || grid[row][col] != 1) {
             return 0;
         }
         grid[row][col] = -1;

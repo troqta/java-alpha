@@ -32,8 +32,8 @@ public class Main {
                         break;
                 }
             }
-            while (!stack.isEmpty()){
-                sum+=stack.pop();
+            while (!stack.isEmpty()) {
+                sum += stack.pop();
             }
 
             return sum;

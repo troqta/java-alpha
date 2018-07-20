@@ -39,8 +39,9 @@ public class BlogUserDetails extends User implements UserDetails {
         this.roles = roles;
         this.user = user;
     }
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities(){
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         String userRoles = StringU
         return AuthorityUtils.commaSeparatedStringToAuthorityList(userRoles);
     }
@@ -50,7 +51,7 @@ public class BlogUserDetails extends User implements UserDetails {
         return null;
     }
 
-    public User getUser(){
+    public User getUser() {
         return this.user;
     }
 }

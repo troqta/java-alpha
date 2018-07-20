@@ -1,25 +1,30 @@
 package intPackage.entity;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table (name = "users")
-public class User{
+@Table(name = "users")
+public class User {
     private Integer id;
     private String email;
     private String fullName;
     private String password;
     private Set<Role> roles;
-    public User(String email, String fullName, String password){
-        this.email=email;
-        this.fullName=fullName;
-        this.password=password;
+
+    public User(String email, String fullName, String password) {
+        this.email = email;
+        this.fullName = fullName;
+        this.password = password;
         this.roles = new HashSet<>();
     }
-    public User() { }
+
+    public User() {
+    }
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -27,7 +32,8 @@ public class User{
     public void setId(Integer id) {
         this.id = id;
     }
-    @Column(name="email", unique=true, nullable=false)
+
+    @Column(name = "email", unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
@@ -35,7 +41,8 @@ public class User{
     public void setEmail(String email) {
         this.email = email;
     }
-    @Column(name="fullName", unique=true, nullable=false)
+
+    @Column(name = "fullName", unique = true, nullable = false)
     public String getFullName() {
         return fullName;
     }
@@ -43,7 +50,8 @@ public class User{
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    @Column(name="password", length=60, nullable=false)
+
+    @Column(name = "password", length = 60, nullable = false)
     public String getPassword() {
         return password;
     }
@@ -61,7 +69,8 @@ public class User{
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    public void addRole(Role role){
+
+    public void addRole(Role role) {
         this.roles.add(role);
     }
 }

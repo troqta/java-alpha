@@ -1,10 +1,12 @@
 <main>
     <div class="container body-content span=8 offset=2">
-        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a id="search_clone1" style="display: none;" href="#"
+           class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">List group item heading</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                blandit.</p>
             <small class="text-muted">3 days ago</small>
         </a>
 
@@ -23,11 +25,12 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="password">Password</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="password"/>
+                            <input type="password" class="form-control" id="password" placeholder="Password"
+                                   name="password"/>
                         </div>
                     </div>
 
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">

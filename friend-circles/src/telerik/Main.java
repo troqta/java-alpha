@@ -17,7 +17,6 @@ public class Main {
             int numberOfCircles = 0;
 
 
-
             return numberOfCircles;
         }
     }

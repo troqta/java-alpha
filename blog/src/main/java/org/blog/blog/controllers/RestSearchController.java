@@ -21,11 +21,11 @@ public class RestSearchController {
     private ArticleRepository articleRepository;
 
     @RequestMapping("/test")
-    public List<SearchDTO> getCategory(){
+    public List<SearchDTO> getCategory() {
         List<SearchDTO> dtos = new ArrayList<>();
         List<Article> articles = this.articleRepository.findAll();
 
-        for(Article article : articles){
+        for (Article article : articles) {
             String categoryName = article.getCategory().getName();
 
             SearchDTO dto = new SearchDTO(categoryName, article);

@@ -30,16 +30,16 @@ public class Main {
 
         for (int number : bag1) {
             int index = bag2.indexOf(number);
-            if(number == bag2.get(bag2.size()-1)){
+            if (number == bag2.get(bag2.size() - 1)) {
                 output.add(-1);
                 continue;
             }
-            for (int i = index+1; i <  bag2.size(); i++) {
-                if(bag2.get(i)>number){
+            for (int i = index + 1; i < bag2.size(); i++) {
+                if (bag2.get(i) > number) {
                     output.add(bag2.get(i));
                     break;
                 }
-                if(i==bag2.size()-1){
+                if (i == bag2.size() - 1) {
                     output.add(-1);
                     break;
                 }
@@ -48,6 +48,6 @@ public class Main {
         }
 
         System.out.println(output.stream().map(Object::toString)
-        .collect(Collectors.joining(",")));
+                .collect(Collectors.joining(",")));
     }
 }

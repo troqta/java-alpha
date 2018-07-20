@@ -2,15 +2,17 @@
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.UserDetailsService(this.userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
+
     @Override
-    protected void configure(HttpSecurity http) throws IOException{
+    protected void configure(HttpSecurity http) throws IOException {
         http.authorizeRequests()
                 .anyRequest().permitAll()
                 .and()

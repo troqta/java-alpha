@@ -8,7 +8,7 @@ public class Hero extends Person {
     private Boolean isGood;
     private ArrayList<Power> listOfPowers;
 
-    public Hero(){
+    public Hero() {
 
     }
 
@@ -19,7 +19,8 @@ public class Hero extends Person {
         this.isGood = isGood;
         this.listOfPowers = listOfPowers;
     }
-    public void addSuperPower(Power power){
+
+    public void addSuperPower(Power power) {
         listOfPowers.add(power);
     }
 
@@ -54,8 +55,9 @@ public class Hero extends Person {
     public void setListOfPowers(ArrayList<Power> listOfPowers) {
         this.listOfPowers = listOfPowers;
     }
-    public boolean canFly(){
-        if(getListOfPowers().contains(Power.getFlight())){
+
+    public boolean canFly() {
+        if (getListOfPowers().contains(Power.getFlight())) {
             return true;
         }
         return false;

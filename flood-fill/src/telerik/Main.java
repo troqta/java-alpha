@@ -8,11 +8,11 @@ public class Main {
                 {1, 1, 0},
                 {1, 0, 1}
         };
-        image = new Solution().floodFill(image, 1 ,1 , 2);
+        image = new Solution().floodFill(image, 1, 1, 2);
 
         for (int i = 0; i < image.length; i++) {
             for (int j = 0; j < image[i].length; j++) {
-                System.out.print(image[i][j]+" ");
+                System.out.print(image[i][j] + " ");
             }
             System.out.println();
         }

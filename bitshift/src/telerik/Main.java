@@ -59,7 +59,7 @@ public class Main {
             if (index + move > input.length() - 1) {
                 index = input.length() - 1 - move;
             } else if (index + move < 0) {
-                index = input.length()-1 - index+move;
+                index = input.length() - 1 - index + move;
             } else {
                 index += move;
             }

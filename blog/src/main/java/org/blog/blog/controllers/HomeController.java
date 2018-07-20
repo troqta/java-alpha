@@ -23,7 +23,7 @@ public class HomeController {
     private CategoryRepository categoryRepository;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model) {
         List<Category> categories = this.categoryRepository.findAll();
 
         model.addAttribute("view", "home/index");
@@ -31,8 +31,9 @@ public class HomeController {
 
         return "base-layout";
     }
+
     @RequestMapping("/error/403")
-    public String accessDenied(Model model){
+    public String accessDenied(Model model) {
         model.addAttribute("view", "error/403");
         return "base-layout";
     }
@@ -44,9 +45,9 @@ public class HomeController {
     }
 
     @GetMapping("/category/{id}")
-    public String listArticles(Model model, @PathVariable Integer id, HttpServletRequest request){
+    public String listArticles(Model model, @PathVariable Integer id, HttpServletRequest request) {
 
-        if(!this.categoryRepository.exists(id)){
+        if (!this.categoryRepository.exists(id)) {
             return "redirect:/";
         }
 
@@ -54,24 +55,24 @@ public class HomeController {
         Category category = this.categoryRepository.findOne(id);
         //Set<Article> articles = category.getArticles();
 
-       // String page = request.getParameter("page");
-        PagedListHolder<Article> articles= new PagedListHolder<>(category.getArticles());
+        // String page = request.getParameter("page");
+        PagedListHolder<Article> articles = new PagedListHolder<>(category.getArticles());
         articles.setPageSize(5);
-        if(request.getParameter("page")!=null){
+        if (request.getParameter("page") != null) {
             int page = Integer.parseInt(request.getParameter("page"));
             articles.setPage(page);
         }
         //if("previous".equals(page)){
-          //  articles=(PagedListHolder<Article>) request.getSession().getAttribute("pagedArticleList");
-           // articles.previousPage();
+        //  articles=(PagedListHolder<Article>) request.getSession().getAttribute("pagedArticleList");
+        // articles.previousPage();
         //} else if("next".equals(page)){
-         //   articles=(PagedListHolder<Article>) request.getSession().getAttribute("pagedArticlList");
-          //  articles.nextPage();
+        //   articles=(PagedListHolder<Article>) request.getSession().getAttribute("pagedArticlList");
+        //  articles.nextPage();
         //} else {
-         //   articles = new PagedListHolder<Article>(category.getArticles());
-          //  articles.setPageSize(5);
-          //  request.getSession().setAttribute("pagedArticleList", articles);
-       // }
+        //   articles = new PagedListHolder<Article>(category.getArticles());
+        //  articles.setPageSize(5);
+        //  request.getSession().setAttribute("pagedArticleList", articles);
+        // }
 
         model.addAttribute("articles", articles);
         model.addAttribute("category", category);

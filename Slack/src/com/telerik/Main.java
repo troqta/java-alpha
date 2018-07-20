@@ -14,10 +14,9 @@ public class Main {
 
 
         Channel currentChannel;
-        if(channels.size()>0){
-            currentChannel=channels.get(0);
-        }
-        else{
+        if (channels.size() > 0) {
+            currentChannel = channels.get(0);
+        } else {
             channels.add(new Channel("default channel"));
             currentChannel = channels.get(0);
         }
@@ -26,17 +25,18 @@ public class Main {
 
     }
 
-    public static Channel getChannel(String name, List<Channel> channels, Channel currentChannel){
-        for(Channel channel : channels){
-            if(channel.getName().equals(name)){
+    public static Channel getChannel(String name, List<Channel> channels, Channel currentChannel) {
+        for (Channel channel : channels) {
+            if (channel.getName().equals(name)) {
                 return channel;
             }
         }
         System.out.println("No channel with such name!");
         return currentChannel;
     }
-    public static void listChannels(List<Channel> channels){
-        for (Channel channel : channels){
+
+    public static void listChannels(List<Channel> channels) {
+        for (Channel channel : channels) {
             System.out.println(channel);
         }
     }

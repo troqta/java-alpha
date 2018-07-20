@@ -1,11 +1,12 @@
 package demoPackage.entity;
 
 @Entity
-@Table(name="roles")
-public class Role{
+@Table(name = "roles")
+public class Role {
     private Integer Id;
     private String name;
     private Set<User> users;
+
     @id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
@@ -15,7 +16,8 @@ public class Role{
     public void setId(Integer id) {
         Id = id;
     }
-    @Collumn(name="name", nullable = false)
+
+    @Collumn(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -24,9 +26,10 @@ public class Role{
         this.name = name;
     }
 
-    public Role (){
+    public Role() {
         this.users = new HashSet<>();
     }
+
     @ManyToMany(mappedBy = "Roles")
     public Set<User> getUsers() {
         return users;

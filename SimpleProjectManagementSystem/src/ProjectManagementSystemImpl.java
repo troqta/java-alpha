@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 
 public class ProjectManagementSystemImpl implements ProjectManagementSystem {
     private Data data;
-    public ProjectManagementSystemImpl(){
+
+    public ProjectManagementSystemImpl() {
         data = new ItemsList();
     }
 
@@ -94,10 +95,10 @@ public class ProjectManagementSystemImpl implements ProjectManagementSystem {
     }
 
     @Override
-    public void changeTodoState(String itemName , String state) {
-        for(Item item : data.getItems()){
-            if(item instanceof TODO){
-                if(item.getTitle().equals(itemName)){
+    public void changeTodoState(String itemName, String state) {
+        for (Item item : data.getItems()) {
+            if (item instanceof TODO) {
+                if (item.getTitle().equals(itemName)) {
                     try {
                         ((TODO) item).setState(TodoState.fromName(state));
                     } catch (ValidationException e) {

@@ -1,6 +1,7 @@
 <main>
     <div class="container body-content span=8 offset=2">
-        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a id="search_clone1" style="display: none;" href="#"
+           class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">SDASDAS</h5>
             </div>
@@ -44,8 +45,11 @@
                     </div>
                     <div class="form-group">
                         <table>
-                            <img class="img-circle" th:attr="src=@{${user.avatarPath}}" style="width:84px;height:84px" />
-                            <tr><td>Image to upload:</td><td><input type="file" name="file" /></td></tr>
+                            <img class="img-circle" th:attr="src=@{${user.avatarPath}}" style="width:84px;height:84px"/>
+                            <tr>
+                                <td>Image to upload:</td>
+                                <td><input type="file" name="file"/></td>
+                            </tr>
                         </table>
 
                     </div>

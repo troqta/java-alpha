@@ -1,7 +1,7 @@
 package com.villian;
 
 public enum Gender {
-    MALE ,
+    MALE,
     FEMALE,
     MENTALLY_ILL
 }

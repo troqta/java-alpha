@@ -1,6 +1,7 @@
 <main>
     <div class="container body-content">
-        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a id="search_clone1" style="display: none;" href="#"
+           class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">asd</h5>
             </div>
@@ -10,7 +11,9 @@
 
         <div class="list-group" id="search_result">
         </div>
-        <h1>Category - <th:block th:text="${category.name}"></th:block></h1>
+        <h1>Category -
+            <th:block th:text="${category.name}"></th:block>
+        </h1>
         <div class="row">
             <th:block th:each="article : ${articles.pageList}">
                 <div class="col-md-6">
@@ -21,9 +24,11 @@
 
                         <p th:text="${article.summary}"></p>
 
-                        <a class="author" th:text="${article.author.fullName}" th:href="@{/user/{id}(id=${article.author.id})}"></a>
+                        <a class="author" th:text="${article.author.fullName}"
+                           th:href="@{/user/{id}(id=${article.author.id})}"></a>
                         <p>
-                          <h6>Tags: </h6>  <a class="btn btn-default btn-xs" th:each="tag:${article.tags}" th:href="@{/tag/{name}(name=${tag.name})}" th:text="${tag.name}"></a>
+                        <h6>Tags: </h6>  <a class="btn btn-default btn-xs" th:each="tag:${article.tags}"
+                                            th:href="@{/tag/{name}(name=${tag.name})}" th:text="${tag.name}"></a>
                         </p>
 
 

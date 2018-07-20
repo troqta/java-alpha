@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="comments")
+@Table(name = "comments")
 public class Comment {
     private int id;
     private User author;
@@ -15,16 +15,17 @@ public class Comment {
     private Article article;
     private String authorName;
 
-    public Comment(User author, String content, Article article, String authorName){
-        this.author=author;
-        this.content=content;
-        this.article=article;
-        this.authorName=authorName;
+    public Comment(User author, String content, Article article, String authorName) {
+        this.author = author;
+        this.content = content;
+        this.article = article;
+        this.authorName = authorName;
 
     }
 
 
-    public Comment(){}
+    public Comment() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +38,7 @@ public class Comment {
     }
 
     @ManyToOne
-    @JoinColumn(nullable = false, name="authorID")
+    @JoinColumn(nullable = false, name = "authorID")
     public User getAuthor() {
         return author;
     }
@@ -46,7 +47,7 @@ public class Comment {
         this.author = author;
     }
 
-    @Column(name="content", nullable = false)
+    @Column(name = "content", nullable = false)
     public String getContent() {
         return content;
     }
@@ -56,7 +57,7 @@ public class Comment {
     }
 
 
-    @Column(name= "date")
+    @Column(name = "date")
     public String getDate() {
         return date;
     }
@@ -66,7 +67,7 @@ public class Comment {
     }
 
     @ManyToOne
-    @JoinColumn(nullable = false, name= "articleId")
+    @JoinColumn(nullable = false, name = "articleId")
     public Article getArticle() {
         return article;
     }
@@ -75,7 +76,7 @@ public class Comment {
         this.article = article;
     }
 
-    @Column(name= "authorName")
+    @Column(name = "authorName")
     public String getAuthorName() {
         return authorName;
     }

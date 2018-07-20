@@ -1,17 +1,19 @@
 package models;
 
-public enum  TicketPriority {
+public enum TicketPriority {
     HIGHPRIORITY("High-Priority"), LOWPRIORITY("Low-Priority");
 
     private String name;
-    TicketPriority(String name){
-        this.name=name;
+
+    TicketPriority(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return name;
     }
+
     private static final String PRIORITY_HIGHPRIORITY = "HIGHPRIORITY";
     private static final String PRIORITY_LOWPRIORITY = "LOWPRIORITY";
 

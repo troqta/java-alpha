@@ -1,4 +1,5 @@
 package org.blog.blog.entity;
+
 import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User{
+public class User {
     private Integer id;
     private String email;
     private String fullName;
@@ -16,16 +17,20 @@ public class User{
     private Set<Role> roles;
     private Set<Article> articles;
     private String avatarPath;
-    public User(String email, String fullName, String password){
-        this.email=email;
-        this.fullName=fullName;
-        this.password=password;
+
+    public User(String email, String fullName, String password) {
+        this.email = email;
+        this.fullName = fullName;
+        this.password = password;
         this.roles = new HashSet<>();
         this.articles = new HashSet<>();
     }
-    public User() { }
+
+    public User() {
+    }
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -33,7 +38,8 @@ public class User{
     public void setId(Integer id) {
         this.id = id;
     }
-    @Column(name="email", unique=true, nullable=false)
+
+    @Column(name = "email", unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
@@ -41,7 +47,8 @@ public class User{
     public void setEmail(String email) {
         this.email = email;
     }
-    @Column(name="fullName", unique=true, nullable=false)
+
+    @Column(name = "fullName", unique = true, nullable = false)
     public String getFullName() {
         return fullName;
     }
@@ -49,7 +56,8 @@ public class User{
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    @Column(name="password", length=60, nullable=false)
+
+    @Column(name = "password", length = 60, nullable = false)
     public String getPassword() {
         return password;
     }
@@ -63,12 +71,13 @@ public class User{
     public Set<Role> getRoles() {
         return roles;
     }
+
     @OneToMany(mappedBy = "author")
     public Set<Article> getArticles() {
         return articles;
     }
 
-    @Column(name="avatarPath")
+    @Column(name = "avatarPath")
     public String getAvatarPath() {
         return avatarPath;
     }
@@ -84,25 +93,26 @@ public class User{
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    public void addRole(Role role){
+
+    public void addRole(Role role) {
         this.roles.add(role);
     }
 
     @Transient
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return this.getRoles()
                 .stream()
                 .anyMatch(role -> role.getName().equals("ROLE_ADMIN"));
     }
 
     @Transient
-    public boolean isAuthor(Article article){
+    public boolean isAuthor(Article article) {
         return Objects.equals(this.getId(),
-                            article.getAuthor().getId());
+                article.getAuthor().getId());
     }
 
     @Transient
-    public String getSimpleName(){
+    public String getSimpleName() {
         return StringUtils.capitalize(this.getFullName().substring(5).toLowerCase());
     }
 }

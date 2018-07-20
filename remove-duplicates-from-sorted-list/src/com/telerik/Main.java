@@ -24,13 +24,13 @@ public class Main {
             Set<Integer> uniques = new HashSet<>();
             ListNode result = new ListNode(-1);
             ListNode node = result;
-            while(head!=null){
-                if(!uniques.contains(head.val)){
+            while (head != null) {
+                if (!uniques.contains(head.val)) {
                     node.next = new ListNode(head.val);
-                    node=node.next;
+                    node = node.next;
                 }
                 uniques.add(head.val);
-                head=head.next;
+                head = head.next;
             }
 
             return result.next;

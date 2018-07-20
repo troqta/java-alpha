@@ -43,7 +43,7 @@ public class Main {
     public static void main(String[] args) {
         fakeInput();
         Scanner in = new Scanner(System.in);
-        
+
 
         boolean hasEnded = false;
         while (true) {
@@ -109,8 +109,7 @@ public class Main {
                     .map(Product::toString)
                     .collect(Collectors.joining(", "));
             System.out.println("Ok: " + result);
-        }
-        else System.out.println("Error: Type "+type+" does not exists");
+        } else System.out.println("Error: Type " + type + " does not exists");
 
     }
 

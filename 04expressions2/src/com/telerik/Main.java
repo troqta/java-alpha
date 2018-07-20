@@ -18,10 +18,10 @@ public class Main {
         String[] numbersString = in.nextLine().split("");
         int[] numbers = new int[numbersString.length];
         for (int i = 0; i < numbersString.length; i++) {
-            numbers[i]=Integer.parseInt(numbersString[i]);
+            numbers[i] = Integer.parseInt(numbersString[i]);
         }
         int n = in.nextInt();
-        int counter=0;
+        int counter = 0;
         String[] operators = {"+", "*", "-", ""};
 
         int maxEnc = 1;
@@ -45,14 +45,15 @@ public class Main {
             }
             result += numbers[numbers.length - 1];
 
-            int resultNumber = (int)eval(result);
-            System.out.println(result+"="+resultNumber);
-            if(n==resultNumber){
+            int resultNumber = (int) eval(result);
+            System.out.println(result + "=" + resultNumber);
+            if (n == resultNumber) {
                 counter++;
             }
         }
         System.out.println(counter);
     }
+
     public static double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
@@ -73,14 +74,14 @@ public class Main {
             double parse() {
                 nextChar();
                 double x = parseExpression();
-                if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
+                if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char) ch);
                 return x;
             }
 
-          double parseExpression() {
+            double parseExpression() {
                 double x = parseTerm();
-                for (;;) {
-                    if      (eat('+')) x += parseTerm();
+                for (; ; ) {
+                    if (eat('+')) x += parseTerm();
                     else if (eat('-')) x -= parseTerm();
                     else return x;
                 }
@@ -88,8 +89,8 @@ public class Main {
 
             double parseTerm() {
                 double x = parseFactor();
-                for (;;) {
-                    if      (eat('*')) x *= parseFactor();
+                for (; ; ) {
+                    if (eat('*')) x *= parseFactor();
                     else if (eat('/')) x /= parseFactor();
                     else return x;
                 }
@@ -112,7 +113,7 @@ public class Main {
                     String func = str.substring(startPos, this.pos);
                     x = parseFactor();
                 } else {
-                    throw new RuntimeException("Unexpected: " + (char)ch);
+                    throw new RuntimeException("Unexpected: " + (char) ch);
                 }
 
 

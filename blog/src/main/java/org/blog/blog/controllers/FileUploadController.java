@@ -35,10 +35,10 @@ public class FileUploadController {
     @GetMapping("user/uploadForm")
     public String listUploadedFiles(Model model) throws IOException {
         //model.addAttribute("files", storageService
-          //      .loadAll()
-            //    .map(path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class, "serveFile",
+        //      .loadAll()
+        //    .map(path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class, "serveFile",
         // path.getFileName()
-              //          .toString()).build().toString()).collect(Collectors.toList()));
+        //          .toString()).build().toString()).collect(Collectors.toList()));
         //return "uploadForm";
         model.addAttribute("view", "/user/uploadForm");
         return "base-layout";
@@ -56,21 +56,21 @@ public class FileUploadController {
     }
 
     @PostMapping("/user/uploadForm")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, Model model){
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, Model model) {
 
 
         UserDetails user = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal();
         User userEntity = this.userRepository.findByEmail(user.getUsername());
-        userEntity.setAvatarPath("/upload-dir/"+file.getOriginalFilename());
+        userEntity.setAvatarPath("/upload-dir/" + file.getOriginalFilename());
 
         this.userRepository.saveAndFlush(userEntity);
 
         storageService.store(file);
 
         model.addAttribute("view", "user/uploadForm");
-        redirectAttributes.addFlashAttribute("message", "You succesfully uploaded "+file.getOriginalFilename()+"!");
+        redirectAttributes.addFlashAttribute("message", "You succesfully uploaded " + file.getOriginalFilename() + "!");
         //return "uploadForm";
         // return "base-layout";
         return "redirect:/profile";

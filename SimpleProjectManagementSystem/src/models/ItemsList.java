@@ -8,7 +8,8 @@ import java.util.List;
 
 public class ItemsList implements Data {
     private ArrayList<Item> items;
-    public ItemsList(){
+
+    public ItemsList() {
         items = new ArrayList<>();
     }
 
@@ -18,7 +19,7 @@ public class ItemsList implements Data {
     }
 
     @Override
-    public void addItem(Item item){
+    public void addItem(Item item) {
         items.add(item);
     }
 }

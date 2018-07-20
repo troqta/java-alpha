@@ -1,16 +1,20 @@
 <main>
     <div class="container body-content">
-        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a id="search_clone1" style="display: none;" href="#"
+           class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">List group item heading</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                blandit.</p>
             <small class="text-muted">3 days ago</small>
         </a>
 
         <div class="list-group" id="search_result">
         </div>
-        <h1>Search by Tag - <th:block th:text="${tag.name}"></th:block></h1>
+        <h1>Search by Tag -
+            <th:block th:text="${tag.name}"></th:block>
+        </h1>
         <div class="row">
             <th:block th:each="article : ${tag.articles}">
                 <div class="col-md-6">
@@ -21,10 +25,12 @@
 
                         <p th:text="${article.summary}"></p>
 
-                        <a class="author" th:text="${article.author.fullName}" th:href="@{/user/{id}(id=${article.author.id})}"></a>
+                        <a class="author" th:text="${article.author.fullName}"
+                           th:href="@{/user/{id}(id=${article.author.id})}"></a>
 
                         <p>
-                            <a class="btn btn-default btn-xs" th:each="tag:${article.tags}" th:href="@{/tag/{name}(name=${tag.name})}" th:text="${tag.name}"></a>
+                            <a class="btn btn-default btn-xs" th:each="tag:${article.tags}"
+                               th:href="@{/tag/{name}(name=${tag.name})}" th:text="${tag.name}"></a>
                         </p>
 
 

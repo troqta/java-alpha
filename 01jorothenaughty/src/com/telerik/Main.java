@@ -27,7 +27,7 @@ public class Main {
         int col = in.nextInt();
         in.nextLine();
         int numberOfJumps = 0;
-        int sum=0;
+        int sum = 0;
         HashSet<char[]> visited = new HashSet<>();
         List<String[]> jumps = new ArrayList<>();
         for (int i = 0; i < j; i++) {
@@ -37,20 +37,20 @@ public class Main {
         boolean isCaught = false;
         while (!hasEscaped && !isCaught) {
             for (String[] jump : jumps) {
-                char[] currentPosition = {(char)row, (char)col };
+                char[] currentPosition = {(char) row, (char) col};
                 int dRow = Integer.parseInt(jump[0]);
                 int dCol = Integer.parseInt(jump[1]);
                 int nextRow = row + dRow;
                 int nextCol = col + dCol;
-                sum+=getValue(row, col, cols);
+                sum += getValue(row, col, cols);
                 numberOfJumps++;
-                if (nextCol < 0 || nextCol > cols-1 || nextRow < 0 || nextRow > rows-1) {
+                if (nextCol < 0 || nextCol > cols - 1 || nextRow < 0 || nextRow > rows - 1) {
                     hasEscaped = true;
                     break;
 
                 }
-                if(visited.contains(currentPosition)){
-                    isCaught=true;
+                if (visited.contains(currentPosition)) {
+                    isCaught = true;
                     break;
                 }
                 visited.add(currentPosition);
@@ -59,17 +59,16 @@ public class Main {
                 col = nextCol;
             }
         }
-        if(hasEscaped){
+        if (hasEscaped) {
             System.out.println("escaped " + sum);
-        }
-        else{
+        } else {
             System.out.println("caught " + numberOfJumps);
         }
 
 
     }
 
-    public static int getValue(int row, int col,int cols) {
-        return row*cols+1+col;
+    public static int getValue(int row, int col, int cols) {
+        return row * cols + 1 + col;
     }
 }

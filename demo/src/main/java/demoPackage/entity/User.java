@@ -1,24 +1,29 @@
 package demoPackage.entity;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "users")
-public class User{
+@Table(name = "users")
+public class User {
     private Integer id;
     private String email;
     private String fullName;
     private String password;
     private Set<Roles> roles;
-    public User(String email, String fullName, String password){
-        this.email=email;
-        this.fullName=fullName;
-        this.password=password;
+
+    public User(String email, String fullName, String password) {
+        this.email = email;
+        this.fullName = fullName;
+        this.password = password;
         this.roles = new HashSet<>();
     }
-    public User() { }
+
+    public User() {
+    }
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -26,7 +31,8 @@ public class User{
     public void setId(Integer id) {
         this.id = id;
     }
-    @Column(name="email", unique=true, nullable=false)
+
+    @Column(name = "email", unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
@@ -34,7 +40,8 @@ public class User{
     public void setEmail(String email) {
         this.email = email;
     }
-    @Column(name="fullName", unique=true, nullable=false)
+
+    @Column(name = "fullName", unique = true, nullable = false)
     public String getFullName() {
         return fullName;
     }
@@ -42,7 +49,8 @@ public class User{
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    @Column(name="password", lenght=60, nullable=false)
+
+    @Column(name = "password", lenght = 60, nullable = false)
     public String getPassword() {
         return password;
     }

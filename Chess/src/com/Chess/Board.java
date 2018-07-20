@@ -10,12 +10,13 @@ public class Board extends Position {
     private int deadBlackPieces;
     private int deadWhitePieces;
     private ArrayList<ChessPiece> pieces;
-    public Board(){
+
+    public Board() {
         super();
-        numberOfBlackPieces=0;
-        numberOfWhitePieces=0;
-        deadBlackPieces=0;
-        deadWhitePieces=0;
+        numberOfBlackPieces = 0;
+        numberOfWhitePieces = 0;
+        deadBlackPieces = 0;
+        deadWhitePieces = 0;
         pieces = new ArrayList<>();
     }
 
@@ -58,40 +59,42 @@ public class Board extends Position {
     public void setPieces(ArrayList<ChessPiece> pieces) {
         this.pieces = pieces;
     }
-    public static boolean isSpotTaken(Position position, Board board){
-        for (ChessPiece piece: board.getPieces()) {
-            if(position.getCol() == piece.getCol() &&
-                    position.getRow() == piece.getRow()){
+
+    public static boolean isSpotTaken(Position position, Board board) {
+        for (ChessPiece piece : board.getPieces()) {
+            if (position.getCol() == piece.getCol() &&
+                    position.getRow() == piece.getRow()) {
                 return true;
             }
 
         }
         return false;
     }
-    public void removePiece(ChessPiece chessPiece){
+
+    public void removePiece(ChessPiece chessPiece) {
         this.getPieces().remove(chessPiece);
-        if(chessPiece.isWhite()){
-            this.setNumberOfWhitePieces(this.getNumberOfWhitePieces()-1);
-            this.setDeadWhitePieces(this.getDeadWhitePieces()+1);
-        }
-        else{
-            this.setNumberOfBlackPieces(this.getNumberOfBlackPieces()-1);
-            this.setDeadBlackPieces(this.getDeadBlackPieces()+1);
-        }
-    }
-    public void addPiece(ChessPiece chessPiece){
-       this.getPieces().add(chessPiece);
-        if(chessPiece.isWhite()){
-            this.setNumberOfWhitePieces(this.getNumberOfWhitePieces()+1);
-        }
-        else{
-            this.setNumberOfBlackPieces(this.getNumberOfBlackPieces()+1);
+        if (chessPiece.isWhite()) {
+            this.setNumberOfWhitePieces(this.getNumberOfWhitePieces() - 1);
+            this.setDeadWhitePieces(this.getDeadWhitePieces() + 1);
+        } else {
+            this.setNumberOfBlackPieces(this.getNumberOfBlackPieces() - 1);
+            this.setDeadBlackPieces(this.getDeadBlackPieces() + 1);
         }
     }
-    public ChessPiece findPiceByPosition(Position position){
-        for (ChessPiece chesspiece:
-             this.getPieces()) {
-            if(chesspiece.getCol()==position.getCol() && chesspiece.getRow()==position.getRow()){
+
+    public void addPiece(ChessPiece chessPiece) {
+        this.getPieces().add(chessPiece);
+        if (chessPiece.isWhite()) {
+            this.setNumberOfWhitePieces(this.getNumberOfWhitePieces() + 1);
+        } else {
+            this.setNumberOfBlackPieces(this.getNumberOfBlackPieces() + 1);
+        }
+    }
+
+    public ChessPiece findPiceByPosition(Position position) {
+        for (ChessPiece chesspiece :
+                this.getPieces()) {
+            if (chesspiece.getCol() == position.getCol() && chesspiece.getRow() == position.getRow()) {
                 return chesspiece;
             }
         }

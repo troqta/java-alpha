@@ -23,15 +23,15 @@ public class Graph {
         connectedList.get(source).add(destination);
     }
 
-    public void dfs(int node){
-        visited[node]= true;
+    public void dfs(int node) {
+        visited[node] = true;
 
         System.out.println(node + " ");
         Iterator iterator = connectedList.get(node).listIterator();
 
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             int adjacent = (int) iterator.next();
-            if(!visited[adjacent]){
+            if (!visited[adjacent]) {
                 dfs(adjacent);
             }
         }

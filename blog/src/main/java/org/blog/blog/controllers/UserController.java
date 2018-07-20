@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.Set;
 
 @Controller
-public class UserController{
+public class UserController {
     private final StorageService storageService;
     @Autowired
     RoleRepository roleRepository;
@@ -35,16 +35,21 @@ public class UserController{
     UserRepository userRepository;
 
     @Autowired
-    public UserController(StorageService storageService){this.storageService = storageService;}
+    public UserController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         model.addAttribute("view", "user/register");
-                return "base-layout";
+        return "base-layout";
     }
+
     @PostMapping("/register")
-    public String registerProcess(UserBindingModel userBindingModel){
-        if(!userBindingModel.getPassword().equals(userBindingModel.getConfirmPassword())){return "redirect:/register";}
+    public String registerProcess(UserBindingModel userBindingModel) {
+        if (!userBindingModel.getPassword().equals(userBindingModel.getConfirmPassword())) {
+            return "redirect:/register";
+        }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         User user = new User(
                 userBindingModel.getEmail(),
@@ -57,15 +62,15 @@ public class UserController{
     }
 
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(Model model) {
         model.addAttribute("view", "user/login");
         return "base-layout";
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response){
-        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
-        if(auth!=null){
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login?logout";
@@ -74,7 +79,7 @@ public class UserController{
 
     @GetMapping("/profile")
     @PreAuthorize("isAuthenticated()")
-    public String profilePage(Model model){
+    public String profilePage(Model model) {
         UserDetails principal = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal();
@@ -85,7 +90,7 @@ public class UserController{
     }
 
     @GetMapping("/user/edit")
-    public String edit(Model model) throws IOException{
+    public String edit(Model model) throws IOException {
         UserDetails userEntity = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal();
@@ -98,7 +103,7 @@ public class UserController{
     }
 
     @PostMapping("/user/edit")
-    public String editProcess(@RequestParam("file")MultipartFile file, Model model, UserBindingModel userBindingModel){
+    public String editProcess(@RequestParam("file") MultipartFile file, Model model, UserBindingModel userBindingModel) {
 
         UserDetails userEntity = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication()
@@ -115,20 +120,20 @@ public class UserController{
         user.setFullName(userBindingModel.getFullName());
         user.setEmail(userBindingModel.getEmail());
 
-        if(file.isEmpty()){
+        if (file.isEmpty()) {
+            this.userRepository.saveAndFlush(user);
+        } else {
+            user.setAvatarPath("/upload-dir/" + file.getOriginalFilename());
+            this.storageService.store(file);
             this.userRepository.saveAndFlush(user);
         }
-        else{
-            user.setAvatarPath("/upload-dir/"+file.getOriginalFilename());
-            this.storageService.store(file);
-            this.userRepository.saveAndFlush(user);}
 
 
         return "redirect:/profile";
     }
 
     @GetMapping("/user/{id}")
-    public String userDetails(Model model, @PathVariable Integer id){
+    public String userDetails(Model model, @PathVariable Integer id) {
 
         User user = this.userRepository.findOne(id);
 

@@ -33,21 +33,20 @@ public class Main {
             String word = "";
 
             for (int j = 0; j < slogan.length(); j++) {
-                if (j == slogan.length() - 1 && !words.contains(word+slogan.charAt(j))) {
+                if (j == slogan.length() - 1 && !words.contains(word + slogan.charAt(j))) {
                     System.out.println("NOT VALID");
                     invalid = true;
                     break;
-                }else {
-                    if(!words.contains(word)){
-                        word+=slogan.charAt(j);
-                        if(j==slogan.length()-1){
+                } else {
+                    if (!words.contains(word)) {
+                        word += slogan.charAt(j);
+                        if (j == slogan.length() - 1) {
                             testMethod(result, word, slogan.charAt(j));
                         }
-                    }
-                    else {
+                    } else {
                         result.append(word).append(" ");
                         word = "";
-                        word+=slogan.charAt(j);
+                        word += slogan.charAt(j);
                     }
                 }
             }
@@ -58,9 +57,10 @@ public class Main {
             System.out.println(result);
         }
     }
-    public static void testMethod(StringBuilder result, String word, char letter){
+
+    public static void testMethod(StringBuilder result, String word, char letter) {
         result.append(word).append(" ");
         word = "";
-        word+=letter;
+        word += letter;
     }
 }

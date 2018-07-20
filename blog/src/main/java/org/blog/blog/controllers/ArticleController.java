@@ -40,13 +40,14 @@ public class ArticleController {
     private CommentRepository commentRepository;
 
     @Autowired
-    public ArticleController(StorageService storageService){this.storageService=storageService;}
-
+    public ArticleController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
 
     @GetMapping("/article/create")
     @PreAuthorize("isAuthenticated()")
-    public String create(Model model) throws IOException{
+    public String create(Model model) throws IOException {
 
         List<Category> categories = this.categoryRepository.findAll();
         model.addAttribute("categories", categories);
@@ -54,9 +55,10 @@ public class ArticleController {
         return "base-layout";
 
     }
+
     @PostMapping("/article/create")
     @PreAuthorize("isAuthenticated()")
-    public String createProcess(@RequestParam("file") MultipartFile file, ArticleBindingModel articleBindingModel){
+    public String createProcess(@RequestParam("file") MultipartFile file, ArticleBindingModel articleBindingModel) {
         UserDetails user = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         User userEntity = this.userRepository.findByEmail(user.getUsername());
@@ -65,7 +67,7 @@ public class ArticleController {
         String date = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date(System.currentTimeMillis()));
 
 
-        if(file.isEmpty()){
+        if (file.isEmpty()) {
             String imagePath = "/upload-dir/default.jpg";
             Article articleEntity = new Article(
                     articleBindingModel.getTitle(),
@@ -78,9 +80,8 @@ public class ArticleController {
             );
             this.articleRepository.saveAndFlush(articleEntity);
 
-        }
-        else{
-            String imagePath="/upload-dir/"+file.getOriginalFilename();
+        } else {
+            String imagePath = "/upload-dir/" + file.getOriginalFilename();
             Article articleEntity = new Article(
                     articleBindingModel.getTitle(),
                     articleBindingModel.getContent(),
@@ -91,16 +92,18 @@ public class ArticleController {
                     date
             );
             this.articleRepository.saveAndFlush(articleEntity);
-            storageService.store(file);}
+            storageService.store(file);
+        }
 
         return "redirect:/";
     }
+
     @GetMapping("/article/{id}")
-    public String details(Model model, @PathVariable Integer id){
-        if(!this.articleRepository.exists(id)){
+    public String details(Model model, @PathVariable Integer id) {
+        if (!this.articleRepository.exists(id)) {
             return "redirect:/";
         }
-        if(!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)){
+        if (!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)) {
             UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
             User entityUser = this.userRepository.findByEmail(principal.getUsername());
@@ -113,7 +116,6 @@ public class ArticleController {
         List<Comment> comments = article.getComments();
 
 
-
         model.addAttribute("comments", comments);
         model.addAttribute("article", article);
         model.addAttribute("view", "article/details");
@@ -122,11 +124,11 @@ public class ArticleController {
     }
 
     @PostMapping("/article/{id}")
-    public String createComment(@PathVariable Integer id, CommentBindingModel commentBindingModel){
-        if(!this.articleRepository.exists(id)){
+    public String createComment(@PathVariable Integer id, CommentBindingModel commentBindingModel) {
+        if (!this.articleRepository.exists(id)) {
             return "redirect:/";
         }
-        if(!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)) {
+        if (!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)) {
             UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
             User entityUser = this.userRepository.findByEmail(principal.getUsername());
@@ -145,17 +147,17 @@ public class ArticleController {
 
     @GetMapping("/article/edit/{id}")
     @PreAuthorize("isAuthenticated()")
-    public String edit(@PathVariable Integer id, Model model) throws IOException{
-        if(!this.articleRepository.exists(id)){
+    public String edit(@PathVariable Integer id, Model model) throws IOException {
+        if (!this.articleRepository.exists(id)) {
             return "redirect:/";
         }
         Article article = this.articleRepository.findOne(id);
 
-        if(!isUserAuthorOrAdmin(article)){
-            return "redirect:/article/"+id;
+        if (!isUserAuthorOrAdmin(article)) {
+            return "redirect:/article/" + id;
         }
         String tagString = article.getTags().stream()
-                .map(Tag :: getName)
+                .map(Tag::getName)
                 .collect(Collectors.joining(", "));
         List<Category> categories = this.categoryRepository.findAll();
 
@@ -169,15 +171,15 @@ public class ArticleController {
 
     @PostMapping("/article/edit/{id}")
     @PreAuthorize("isAuthenticated()")
-    public String editProcess(@RequestParam("file") MultipartFile file, @PathVariable Integer id, ArticleBindingModel articleBindingModel){
-        if(!this.articleRepository.exists(id)){
+    public String editProcess(@RequestParam("file") MultipartFile file, @PathVariable Integer id, ArticleBindingModel articleBindingModel) {
+        if (!this.articleRepository.exists(id)) {
             return "redirect:/";
         }
 
         Article article = this.articleRepository.findOne(id);
 
-        if(!isUserAuthorOrAdmin(article)){
-            return "redirect:/article/"+id;
+        if (!isUserAuthorOrAdmin(article)) {
+            return "redirect:/article/" + id;
         }
         Category category = this.categoryRepository.findOne(articleBindingModel.getCategoryId());
         HashSet<Tag> tags = this.findTagsFromString(articleBindingModel.getTagString());
@@ -187,27 +189,28 @@ public class ArticleController {
         article.setTitle(articleBindingModel.getTitle());
         article.setCategory(category);
         article.setTags(tags);
-        if(file.isEmpty()){
+        if (file.isEmpty()) {
             this.articleRepository.saveAndFlush(article);
+        } else {
+            article.setImagePath("/upload-dir/" + file.getOriginalFilename());
+            this.articleRepository.saveAndFlush(article);
+            this.storageService.store(file);
         }
-        else{
-        article.setImagePath("/upload-dir/"+file.getOriginalFilename());
-        this.articleRepository.saveAndFlush(article);
-        this.storageService.store(file);}
 
-        return "redirect:/article/"+article.getId();
+        return "redirect:/article/" + article.getId();
 
     }
+
     @GetMapping("/article/delete/{id}")
     @PreAuthorize("isAuthenticated()")
-    public String delete(Model model, @PathVariable Integer id){
-        if(!this.articleRepository.exists(id)){
+    public String delete(Model model, @PathVariable Integer id) {
+        if (!this.articleRepository.exists(id)) {
             return "redirect:/";
         }
         Article article = this.articleRepository.findOne(id);
 
-        if(!isUserAuthorOrAdmin(article)){
-            return "redirect:/article/"+id;
+        if (!isUserAuthorOrAdmin(article)) {
+            return "redirect:/article/" + id;
         }
 
         model.addAttribute("article", article);
@@ -215,35 +218,36 @@ public class ArticleController {
 
         return "base-layout";
     }
+
     @PostMapping("/article/delete/{id}")
     @PreAuthorize("isAuthenticuated()")
-    public String deleteProcess(@PathVariable Integer id){
-        if(!this.articleRepository.exists(id)){
+    public String deleteProcess(@PathVariable Integer id) {
+        if (!this.articleRepository.exists(id)) {
             return "redirect:/";
         }
         Article article = this.articleRepository.findOne(id);
-        if(!isUserAuthorOrAdmin(article)){
-            return "redirect:/article/"+id;
+        if (!isUserAuthorOrAdmin(article)) {
+            return "redirect:/article/" + id;
         }
 
         this.articleRepository.delete(article);
         return "redirect:/";
     }
 
-    private boolean isUserAuthorOrAdmin(Article article){
+    private boolean isUserAuthorOrAdmin(Article article) {
         UserDetails user = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         User userEntity = this.userRepository.findByEmail(user.getUsername());
         return userEntity.isAdmin() || userEntity.isAuthor(article);
     }
 
-    private HashSet<Tag> findTagsFromString(String tagString){
+    private HashSet<Tag> findTagsFromString(String tagString) {
         HashSet<Tag> tags = new HashSet<>();
         String[] tagNames = tagString.split(",\\s*");
-        for(String tagName : tagNames){
+        for (String tagName : tagNames) {
             Tag currentTag = this.tagRepository.findByName(tagName);
 
-            if(currentTag == null){
+            if (currentTag == null) {
                 currentTag = new Tag(tagName);
                 this.tagRepository.saveAndFlush(currentTag);
             }

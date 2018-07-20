@@ -36,7 +36,7 @@ public class Main {
 
     public static void main(String[] args) {
         fakeInput();
-       // Scanner in = new Scanner(System.in);
+        // Scanner in = new Scanner(System.in);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         try {
@@ -63,8 +63,7 @@ public class Main {
                 }
                 command = in.readLine().split(" ");
             }
-        }
-         catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(output);

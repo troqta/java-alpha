@@ -15,10 +15,10 @@ public class BlogUserDetails extends User implements UserDetails {
     private ArrayList<String> roles;
     private User user;
 
-    public BlogUserDetails(User user,ArrayList<String> roles ){
-        super(user.getEmail(),user.getFullName(),user.getPassword());
-        this.roles=roles;
-        this.user=user;
+    public BlogUserDetails(User user, ArrayList<String> roles) {
+        super(user.getEmail(), user.getFullName(), user.getPassword());
+        this.roles = roles;
+        this.user = user;
     }
 
     @Override

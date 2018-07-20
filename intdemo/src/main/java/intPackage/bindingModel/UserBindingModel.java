@@ -1,5 +1,7 @@
 package intPackage.bindingModel;
+
 import org.jetbrains.annotations.NotNull;
+
 public class UserBindingModel {
     @NotNull
     private String email;

@@ -38,6 +38,7 @@ public class Article {
     public void setId(Integer id) {
         Id = id;
     }
+
     @Column(nullable = false)
     public String getTitle() {
         return title;
@@ -46,6 +47,7 @@ public class Article {
     public void setTitle(String title) {
         this.title = title;
     }
+
     @Column(columnDefinition = "text", nullable = false)
     public String getContent() {
         return content;
@@ -54,8 +56,9 @@ public class Article {
     public void setContent(String content) {
         this.content = content;
     }
+
     @ManyToOne
-    @JoinColumn(nullable = false, name ="authorId")
+    @JoinColumn(nullable = false, name = "authorId")
     public User getAuthor() {
         return author;
     }
@@ -64,30 +67,31 @@ public class Article {
         this.author = author;
     }
 
-    public Article(String title, String content, User author, Category category, HashSet<Tag> tags, String imagePath, String date){
-        this.title= title;
-        this.content=content;
-        this.author=author;
-        this.category=category;
-        this.tags=tags;
-        this.imagePath=imagePath;
-        this.date=date;
+    public Article(String title, String content, User author, Category category, HashSet<Tag> tags, String imagePath, String date) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.category = category;
+        this.tags = tags;
+        this.imagePath = imagePath;
+        this.date = date;
     }
 
-    public Article(){}
+    public Article() {
+    }
 
     @Transient
-    public String getSummary(){
-            if(this.getContent().length()>200){
-            return this.getContent().substring(0, this.getContent().length() / 2)+ "...";}
-            else if(this.getContent().length()>300){
-                return this.getContent().substring(0, this.getContent().length() / 3)+"...";
-            }
-            return this.getContent();
+    public String getSummary() {
+        if (this.getContent().length() > 200) {
+            return this.getContent().substring(0, this.getContent().length() / 2) + "...";
+        } else if (this.getContent().length() > 300) {
+            return this.getContent().substring(0, this.getContent().length() / 3) + "...";
+        }
+        return this.getContent();
     }
 
     @ManyToOne
-    @JoinColumn(nullable = false,name = "categoryId")
+    @JoinColumn(nullable = false, name = "categoryId")
     public Category getCategory() {
         return category;
     }
@@ -106,7 +110,7 @@ public class Article {
         this.tags = tags;
     }
 
-    @Column(name="imagePath")
+    @Column(name = "imagePath")
     public String getImagePath() {
         return imagePath;
     }

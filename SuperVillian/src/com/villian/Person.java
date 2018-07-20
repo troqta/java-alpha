@@ -5,13 +5,14 @@ public class Person {
     private Gender gender;
     private double weight;
 
-    public Person(String name, Gender gender, double weight){
+    public Person(String name, Gender gender, double weight) {
         this.name = name;
-        this.gender=gender;
-        this.weight=weight;
+        this.gender = gender;
+        this.weight = weight;
 
     }
-    public Person(){
+
+    public Person() {
 
     }
 

@@ -4,9 +4,9 @@ public class Power {
     private String name;
     private PowerTypes powerTypes;
 
-    public Power(String name, PowerTypes powerTypes){
+    public Power(String name, PowerTypes powerTypes) {
         setName(name);
-        this.powerTypes=powerTypes;
+        this.powerTypes = powerTypes;
     }
 
     public String getName() {
@@ -14,10 +14,9 @@ public class Power {
     }
 
     public void setName(String name) {
-        if(name.length()>3 && name.length()<20) {
+        if (name.length() > 3 && name.length() < 20) {
             this.name = name;
-        }
-        else{
+        } else {
             System.out.println("Power name should be between 3 and 20 symbols long");
             return;
         }

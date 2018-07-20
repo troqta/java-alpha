@@ -13,13 +13,13 @@ public class Main {
         batman.addPower(technology);
         superman.addImmunity(PowerTypes.Tech);
 
-        System.out.println(superman.getName()+"'s Lifepoints: "+superman.getLifePoints());
+        System.out.println(superman.getName() + "'s Lifepoints: " + superman.getLifePoints());
 
         batman.attack(superman, technology);
-        System.out.println(superman.getName()+"'s Lifepoints: "+superman.getLifePoints());
+        System.out.println(superman.getName() + "'s Lifepoints: " + superman.getLifePoints());
 
         batman.attack(superman, kryptonite);
-        System.out.println(superman.getName()+"'s Lifepoints: "+superman.getLifePoints());
+        System.out.println(superman.getName() + "'s Lifepoints: " + superman.getLifePoints());
         batman.listPowers();
 
         Superhero testHero = new Superhero("Te", "randomIdentity", Alignment.Neutral);

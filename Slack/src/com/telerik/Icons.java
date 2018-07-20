@@ -9,12 +9,15 @@ public enum Icons {
     WAOW(":O");
 
     private final String name;
-        private Icons(String name){
-            this.name=name;
-        }
+
+    private Icons(String name) {
+        this.name = name;
+    }
+
     public boolean equalsName(String otherName) {
         return name.equals(otherName);
     }
+
     public String toString() {
         return this.name;
     }

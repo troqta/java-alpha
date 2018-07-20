@@ -56,7 +56,7 @@ public class Main {
             }
             importanceValue = employee.importance;
             for (int subordinateId : employee.subordinates) {
-                importanceValue+= getImportance(employees, subordinateId);
+                importanceValue += getImportance(employees, subordinateId);
             }
 
             return importanceValue;

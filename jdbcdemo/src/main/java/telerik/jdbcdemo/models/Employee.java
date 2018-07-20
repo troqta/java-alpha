@@ -5,7 +5,7 @@ public class Employee {
     private String lastName;
     private String jobTitle;
 
-    public Employee(){
+    public Employee() {
 
     }
 

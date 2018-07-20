@@ -30,7 +30,7 @@ public class CategoryController {
     private ArticleRepository articleRepository;
 
     @GetMapping()
-    public String list(Model model){
+    public String list(Model model) {
         List<Category> categories = this.categoryRepository.findAll();
         categories = categories.stream()
                 .sorted(Comparator.comparingInt(Category::getId))
@@ -44,15 +44,15 @@ public class CategoryController {
     }
 
     @GetMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
 
         model.addAttribute("view", "admin/category/create");
         return "base-layout";
     }
 
     @PostMapping("/create")
-    public String createProcess(CategoryBindingModel categoryBindingModel){
-        if(StringUtils.isEmpty(categoryBindingModel.getName())){
+    public String createProcess(CategoryBindingModel categoryBindingModel) {
+        if (StringUtils.isEmpty(categoryBindingModel.getName())) {
             return "redirect:.admin/categories/create";
         }
         Category category = new Category(categoryBindingModel.getName());
@@ -61,8 +61,8 @@ public class CategoryController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(Model model, @PathVariable Integer id){
-        if(!this.categoryRepository.exists(id)){
+    public String edit(Model model, @PathVariable Integer id) {
+        if (!this.categoryRepository.exists(id)) {
             return "redirect:/admin/categories/";
         }
         Category category = this.categoryRepository.findOne(id);
@@ -72,8 +72,8 @@ public class CategoryController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editProcess(@PathVariable Integer id, CategoryBindingModel categoryBindingModel){
-        if(!this.categoryRepository.exists(id)){
+    public String editProcess(@PathVariable Integer id, CategoryBindingModel categoryBindingModel) {
+        if (!this.categoryRepository.exists(id)) {
             return "redirect:/admin/categories";
         }
         Category category = this.categoryRepository.findOne(id);
@@ -94,13 +94,13 @@ public class CategoryController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteProcess(@PathVariable Integer id){
-        if(!this.categoryRepository.exists(id)){
+    public String deleteProcess(@PathVariable Integer id) {
+        if (!this.categoryRepository.exists(id)) {
             return "redirect:/admin/categories";
         }
 
         Category category = this.categoryRepository.findOne(id);
-        for(Article article : category.getArticles()){
+        for (Article article : category.getArticles()) {
             this.articleRepository.delete(article);
         }
         this.categoryRepository.delete(category);

@@ -13,19 +13,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserController{
+public class UserController {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
     UserRepository userRepository;
+
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         model.addAttribute("view", "user/register");
-                return "base-layout";
+        return "base-layout";
     }
+
     @PostMapping("/register")
-    public String registerProcess(UserBindingModel userBindingModel){
-        if(!userBindingModel.getPassword().equals(userBindingModel.getConfirmPassword())){return "redirect:/register";}
+    public String registerProcess(UserBindingModel userBindingModel) {
+        if (!userBindingModel.getPassword().equals(userBindingModel.getConfirmPassword())) {
+            return "redirect:/register";
+        }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         User user = new User(
                 userBindingModel.getEmail(),

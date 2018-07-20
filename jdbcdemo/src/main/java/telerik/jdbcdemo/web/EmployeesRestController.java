@@ -19,16 +19,17 @@ public class EmployeesRestController {
     private EmployeeService employeeService;
 
     @Autowired
-    public EmployeesRestController(EmployeeService employeeService){
+    public EmployeesRestController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     @GetMapping("/")
     List<Employee> getAll() {
-       return employeeService.getAll();
+        return employeeService.getAll();
     }
 
     @GetMapping("/find/{name}")
-    List<Employee> findByName(@PathVariable("name") String name){
+    List<Employee> findByName(@PathVariable("name") String name) {
         return employeeService.findByName(name);
     }
 }

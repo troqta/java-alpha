@@ -11,7 +11,7 @@ public class NotificationTests {
         //Arrange
         Date now = new Date();
         Date targetDate = new Date(now.getTime());
-        targetDate.setTime(now.getTime()+20*60000);
+        targetDate.setTime(now.getTime() + 20 * 60000);
         MockDateProvider dateProvider = new MockDateProvider(now);
         MockPopup popup = new MockPopup();
 
@@ -24,12 +24,13 @@ public class NotificationTests {
         //Assert
         Assert.assertFalse(popup.isPopupShown());
     }
+
     @Test
-    public void sendNotification_should_showPopUp_when_24MinutesBefore(){
+    public void sendNotification_should_showPopUp_when_24MinutesBefore() {
         //Arrange
         Date now = new Date();
         Date targetDate = new Date(now.getTime());
-        targetDate.setTime(now.getTime()+20*60000);
+        targetDate.setTime(now.getTime() + 20 * 60000);
         MockDateProvider dateProvider = new MockDateProvider(now);
         MockPopup popup = new MockPopup();
 

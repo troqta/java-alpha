@@ -1,13 +1,13 @@
 package com.telerik;
 
-public class Text extends Message implements Likeable{
+public class Text extends Message implements Likeable {
     private String content;
     private int likes;
 
-    public Text(String author, String content){
+    public Text(String author, String content) {
         super(author);
-        likes =0;
-        this.content=content;
+        likes = 0;
+        this.content = content;
     }
 
     @Override
@@ -26,10 +26,11 @@ public class Text extends Message implements Likeable{
 
     @Override
     public String toString() {
-        return "Author: "+getAuthor()+"Content: " + content;
+        return "Author: " + getAuthor() + "Content: " + content;
     }
+
     @Override
     public void showMessage() {
-        System.out.println("Timestamp"+getTimestamp().toString()+"Author: " + getAuthor() + "Content: " + content);
+        System.out.println("Timestamp" + getTimestamp().toString() + "Author: " + getAuthor() + "Content: " + content);
     }
 }

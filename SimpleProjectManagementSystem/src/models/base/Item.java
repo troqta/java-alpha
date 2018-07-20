@@ -20,7 +20,7 @@ public class Item {
     }
 
     public void setTitle(String title) throws ValidationException {
-        if(title.length()<2 || title.length()>10) {
+        if (title.length() < 2 || title.length() > 10) {
             throw new ValidationException("Title should be between 2 and 10 symbols long");
 
         }
@@ -29,16 +29,17 @@ public class Item {
     }
 
     public void setDescription(String description) throws ValidationException {
-        if(description.length()<2 || description.length()>100) {
+        if (description.length() < 2 || description.length() > 100) {
             throw new ValidationException("Description should be between 2 and 100 symbols long");
 
         }
         this.description = description;
     }
-    public  void view(){
+
+    public void view() {
         System.out.println("---------------");
-        System.out.println("Title: "+getTitle());
-        System.out.println("Description: "+getDescription());
+        System.out.println("Title: " + getTitle());
+        System.out.println("Description: " + getDescription());
     }
 
 

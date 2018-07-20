@@ -11,10 +11,10 @@ public class Main {
 //        in.nextLine();
 //        int n = in.nextInt();
         LinkedList<Integer> numbers = new LinkedList<>();
-        for(String number : numbersString){
+        for (String number : numbersString) {
             numbers.add(Integer.parseInt(number));
         }
-        char[] operations = { '*', '+', '-' };
+        char[] operations = {'*', '+', '-'};
         permutateSigns(operations, numbers, 0, "");
     }
 

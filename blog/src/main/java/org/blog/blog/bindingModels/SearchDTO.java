@@ -11,9 +11,9 @@ public class SearchDTO {
     @JsonProperty("article")
     private Article articles;
 
-    public SearchDTO(String categoryName, Article articles){
-        this.categoryName=categoryName;
-        this.articles=articles;
+    public SearchDTO(String categoryName, Article articles) {
+        this.categoryName = categoryName;
+        this.articles = articles;
     }
 
     public String getCategoryName() {

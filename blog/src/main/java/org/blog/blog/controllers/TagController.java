@@ -15,10 +15,10 @@ public class TagController {
     private TagRepository tagRepository;
 
     @GetMapping("/tag/{name}")
-    public String articlesWithTag(Model model, @PathVariable String name){
+    public String articlesWithTag(Model model, @PathVariable String name) {
         Tag tag = this.tagRepository.findByName(name);
 
-        if(tag == null){
+        if (tag == null) {
             return "redirect:/";
         }
         model.addAttribute("view", "tag/articles");

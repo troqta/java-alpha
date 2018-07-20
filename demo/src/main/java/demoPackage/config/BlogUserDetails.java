@@ -31,12 +31,14 @@ public class BlogUserDetails extends User implements UserDetails {
         this.roles = roles;
         this.user = user;
     }
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities(){
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         String userRoles = StringUtils.collectionToCommaDelimtiedString(this.roles);
         return AuthorityUtils.comaSeparatedStringToAuthorityList(userRoles);
     }
-    public User getUser(){
+
+    public User getUser() {
         return this.user;
     }
 }

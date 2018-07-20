@@ -5,7 +5,7 @@ public class Position {
     private int col;
     public static final int MAX_ROW_AND_COL = 8;
 
-    public Position(){
+    public Position() {
         row = 0;
         col = 0;
     }

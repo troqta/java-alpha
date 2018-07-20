@@ -2,10 +2,10 @@ package telerik;
 
 import java.util.Date;
 
-public class MockDateProvider  implements DateProvider{
+public class MockDateProvider implements DateProvider {
     private Date date;
 
-    public MockDateProvider(Date date){
+    public MockDateProvider(Date date) {
         this.date = date;
     }
 

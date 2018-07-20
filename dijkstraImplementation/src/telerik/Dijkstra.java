@@ -48,7 +48,7 @@ public class Dijkstra {
 
             }
             //TODO fill out ze graph
-            graph[0][1]=4;
+            graph[0][1] = 4;
 
         }
     }

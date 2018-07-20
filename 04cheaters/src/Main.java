@@ -8,9 +8,6 @@
 //TODO : FIX
 
 
-
-
-
 import java.io.ByteArrayInputStream;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -97,18 +94,20 @@ public class Main {
         }
         //testing
         System.out.println("-*--*-*-*-TESTS CUZ IM BAAD-*-*-*-**-");
-        dependencies.forEach((x, y)-> System.out.println(x+ " "+printDependencies(y)+"|"));
+        dependencies.forEach((x, y) -> System.out.println(x + " " + printDependencies(y) + "|"));
 
     }
+
     //testing
-    public static String printDependencies(Graph graph){
+    public static String printDependencies(Graph graph) {
         StringBuilder sb = new StringBuilder();
-        graph.vertices.forEach((x, y) ->sb.append(x).append("->").append(stringList(y)).append("|"));
+        graph.vertices.forEach((x, y) -> sb.append(x).append("->").append(stringList(y)).append("|"));
         return sb.toString();
     }
-    public static String stringList(List<String> list){
+
+    public static String stringList(List<String> list) {
         StringBuilder sb = new StringBuilder();
-        list.forEach(x->sb.append(x).append(" "));
+        list.forEach(x -> sb.append(x).append(" "));
         return sb.toString();
     }
 

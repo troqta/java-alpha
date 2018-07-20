@@ -1,10 +1,12 @@
 <main>
     <div class="container body-content span=8 offset=2">
-        <a id="search_clone1" style="display: none;" href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a id="search_clone1" style="display: none;" href="#"
+           class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">List group item heading</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                blandit.</p>
             <small class="text-muted">3 days ago</small>
         </a>
 
@@ -18,14 +20,16 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="article_title">Post Title</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="article_title" placeholder="Post Title" name="title" th:value="${article.title}" disabled="disabled"/>
+                            <input type="text" class="form-control" id="article_title" placeholder="Post Title"
+                                   name="title" th:value="${article.title}" disabled="disabled"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="article_content">Content</label>
                         <div class="col-sm-6">
-                            <textarea class="form-control" rows="6" id="article_content" name="content" th:field="${article.content}" disabled="disabled"></textarea>
+                            <textarea class="form-control" rows="6" id="article_content" name="content"
+                                      th:field="${article.content}" disabled="disabled"></textarea>
                         </div>
                     </div>
 

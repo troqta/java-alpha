@@ -34,8 +34,9 @@ public class DynamicQueue {
         }
         return value;
     }
+
     public int peek() throws Exception {
-        if(isEmpty()){
+        if (isEmpty()) {
             throw new Exception("queue is empty");
         }
         return head.value;

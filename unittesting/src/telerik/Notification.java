@@ -18,21 +18,20 @@ public class Notification {
     public void dismiss() {
         this.isActive = false;
     }
-    public void sendNotification(){
-        if(!isActive){
+
+    public void sendNotification() {
+        if (!isActive) {
             return;
         }
         long now = dateProvider.getDate().getTime();
 
         long interval = targetDate.getTime() - now;
-        int intervalInMinutes = (int)interval/60000;
-        if(15 < intervalInMinutes && intervalInMinutes <30){
+        int intervalInMinutes = (int) interval / 60000;
+        if (15 < intervalInMinutes && intervalInMinutes < 30) {
             showPopup();
-        }
-        else if(0<intervalInMinutes && intervalInMinutes< 5){
+        } else if (0 < intervalInMinutes && intervalInMinutes < 5) {
             sendEmail();
-        }
-        else {
+        } else {
             logOnFile();
         }
     }
@@ -46,6 +45,6 @@ public class Notification {
     }
 
     private void showPopup() {
-       popup.showPopup();
+        popup.showPopup();
     }
 }

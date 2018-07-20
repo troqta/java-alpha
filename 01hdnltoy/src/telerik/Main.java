@@ -41,8 +41,8 @@ public class Main {
     }
 
     public static void hdnl(HashSet<String> used, ArrayList<String> lines, int index, String depth) {
-        if(index+1 == lines.size()){
-            if(!used.contains(lines.get(index))) {
+        if (index + 1 == lines.size()) {
+            if (!used.contains(lines.get(index))) {
                 used.add(lines.get(index));
                 System.out.println(depth + "</" + lines.get(index) + ">");
                 System.out.println(depth + "</" + lines.get(index) + ">");
@@ -51,25 +51,22 @@ public class Main {
         }
 
 
-
-        for (int i = index; i < lines.size()-1; i++) {
+        for (int i = index; i < lines.size() - 1; i++) {
             if (!used.contains(lines.get(i))) {
                 used.add(lines.get(i));
                 System.out.println(depth + "<" + lines.get(i) + ">");
                 String current = lines.get(i);
-                if(i+1<lines.size()) {
+                if (i + 1 < lines.size()) {
                     String next = lines.get(i + 1);
 
                     if ((int) current.charAt(1) < (int) next.charAt(1)) {
 
                         hdnl(used, lines, index, depth + " ");
                         System.out.println(depth + "</" + current + ">");
-                    }
-                    else if((int) current.charAt(1) == (int) next.charAt(1)){
+                    } else if ((int) current.charAt(1) == (int) next.charAt(1)) {
                         System.out.println(depth + "</" + current + ">");
                         return;
-                    }
-                    else {
+                    } else {
                         System.out.println(depth + "</" + current + ">");
 
                     }

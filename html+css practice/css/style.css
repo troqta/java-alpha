@@ -31,12 +31,12 @@ header h1 {
     color: white;
 }
 
-header div>img {
+header div > img {
     display: inline-block;
     width: 30px;
 }
 
-header>div {
+header > div {
     text-align: center;
 }
 
@@ -87,6 +87,7 @@ main article img {
     border-radius: 15px;
     width: 150px;
 }
+
 .zoom:hover {
     transform: scale(1.5);
 }
@@ -105,19 +106,22 @@ article p {
     font-size: 90%;
 }
 
-article>div {
+article > div {
     min-height: 260px;
 }
-.hidden{
+
+.hidden {
     margin: auto;
-    display:none;
+    display: none;
 }
-.unhide{
-    
+
+.unhide {
+
     display: block;
     color: red
 }
-.unhide:hover > .hidden{
+
+.unhide:hover > .hidden {
     display: block;
 }
 

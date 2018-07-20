@@ -28,6 +28,7 @@ public class ArticleBindingModel {
     public String getTitle() {
         return title;
     }
+
     private Integer categoryId;
     private String tagString;
 

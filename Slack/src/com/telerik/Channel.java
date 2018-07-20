@@ -7,9 +7,9 @@ public class Channel {
     private String name;
     private List<Message> messages;
 
-    public Channel(String name){
+    public Channel(String name) {
         this.name = name;
-        messages= new ArrayList<>();
+        messages = new ArrayList<>();
     }
 
     public String getName() {
@@ -19,17 +19,20 @@ public class Channel {
     public List<Message> getMessages() {
         return messages;
     }
-    public void addMessage(Message message){
+
+    public void addMessage(Message message) {
         System.out.println("Message added");
         messages.add(message);
     }
-    public void clearMessages(){
+
+    public void clearMessages() {
         System.out.println("History has been cleared");
         messages.clear();
     }
-    public void listHistory(){
+
+    public void listHistory() {
         System.out.println("----------------");
-        for(Message message : messages){
+        for (Message message : messages) {
             message.showMessage();
         }
     }

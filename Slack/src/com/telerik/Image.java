@@ -6,11 +6,12 @@ public class Image extends Message implements Likeable, Downloadable {
     private File image;
     private int likes;
 
-    public Image(String author, String imagePath){
+    public Image(String author, String imagePath) {
         super(author);
-        likes =0;
-        image=new File(imagePath);
+        likes = 0;
+        image = new File(imagePath);
     }
+
     @Override
     public File download() {
         return image;
@@ -23,9 +24,10 @@ public class Image extends Message implements Likeable, Downloadable {
 
     @Override
     public String toString() {
-        return "This is an image with path: "+ image.getPath();
+        return "This is an image with path: " + image.getPath();
     }
-    public void showMessage(){
-        System.out.println("This is an image with path: "+ image.getPath());
+
+    public void showMessage() {
+        System.out.println("This is an image with path: " + image.getPath());
     }
 }

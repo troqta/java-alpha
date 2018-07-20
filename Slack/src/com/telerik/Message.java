@@ -8,11 +8,12 @@ public abstract class Message {
     private String author;
     private Date timestamp;
 
-    public Message(String author){
-        this.author=author;
-        timestamp= new Date();
+    public Message(String author) {
+        this.author = author;
+        timestamp = new Date();
     }
-    public Message(){
+
+    public Message() {
         this(DEFAULT_AUTHOR);
     }
 
@@ -23,6 +24,7 @@ public abstract class Message {
     public Date getTimestamp() {
         return timestamp;
     }
+
     public abstract void showMessage();
 
 }

@@ -55,7 +55,7 @@ public class Ticket extends Item {
         super.view();
         System.out.println("DueDate: " + dueDate);
         System.out.println("Sender: " + sender);
-        System.out.println("Owner: "+ owner );
-        System.out.println("Priority" +priority);
+        System.out.println("Owner: " + owner);
+        System.out.println("Priority" + priority);
     }
 }
